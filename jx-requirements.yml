@@ -16,7 +16,7 @@ cluster:
   gitServer: https://github.com
   namespace: jx
   project:  ""
-  provider: kind
+  provider: kubernetes
   registry: ""
   zone: ""
 environments:
