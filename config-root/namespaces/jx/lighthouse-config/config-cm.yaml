@@ -64,7 +64,7 @@ data:
         - needs-rebase
         repos:
         - jstrachan/jx3-demo-docker
-      target_url: http://deck-jx.
+      target_url: http://deck-jx.b0c548429dc0.ngrok.io
 kind: ConfigMap
 metadata:
   creationTimestamp: null
