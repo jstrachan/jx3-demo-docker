@@ -30,7 +30,7 @@ jxRequirements:
     owner: jstrachan
     repository: jx3-demo-docker
   - ingress:
-      domain: ""
+      domain: b0c548429dc0.ngrok.io
       externalDNS: false
       namespaceSubDomain: ""
       tls:
