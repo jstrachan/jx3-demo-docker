@@ -15,4 +15,3 @@ spec:
       - backend:
           serviceName: jenkins-x-chartmuseum
           servicePort: 8080
-    host: chartmuseum-jx.b0c548429dc0.ngrok.io

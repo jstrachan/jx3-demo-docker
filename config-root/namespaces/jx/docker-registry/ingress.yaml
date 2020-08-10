@@ -13,7 +13,7 @@ metadata:
   namespace: jx
 spec:
   rules:
-  - host: docker-registry-jx.b0c548429dc0.ngrok.io
+  - host: docker-registry-jx.cluster.local
     http:
       paths:
       - path: /

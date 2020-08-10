@@ -15,4 +15,3 @@ spec:
       - backend:
           serviceName: nexus
           servicePort: 80
-    host: nexus-jx.b0c548429dc0.ngrok.io
