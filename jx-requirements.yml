@@ -29,7 +29,7 @@ environments:
   owner: jstrachan
   repository: jx3-demo-docker
 - ingress:
-    domain: b0c548429dc0.ngrok.io
+    domain: ""
     externalDNS: false
     namespaceSubDomain: ""
     tls:
@@ -48,7 +48,7 @@ environments:
   key: production
 gitops: true
 ingress:
-  domain: ""
+  domain: b0c548429dc0.ngrok.io
   externalDNS: false
   namespaceSubDomain: -jx.
   tls:

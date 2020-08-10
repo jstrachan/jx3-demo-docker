@@ -16,6 +16,7 @@ repositories:
 - name: banzaicloud-stable
   url: https://kubernetes-charts.banzaicloud.com
 releases:
+- chart: jenkins-x/bucketrepo
 - chart: jenkins-x/jxboot-helmfile-resources
   version: 0.0.268
   name: jxboot-helmfile-resources
@@ -52,18 +53,6 @@ releases:
   namespace: jx
   values:
   - versionStream/apps/jenkins-x/lighthouse/values.yaml.gotmpl
-- chart: jenkins-x/nexus
-  version: 0.1.30
-  name: nexus
-  namespace: jx
-  values:
-  - versionStream/apps/jenkins-x/nexus/values.yaml.gotmpl
-- chart: jenkins-x/chartmuseum
-  version: 1.1.7
-  name: chartmuseum
-  namespace: jx
-  values:
-  - versionStream/apps/jenkins-x/chartmuseum/values.yaml.gotmpl
 - chart: stable/docker-registry
   name: docker-registry
   namespace: jx
