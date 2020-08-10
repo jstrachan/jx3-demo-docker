@@ -1,0 +1,68 @@
+# Source: bucketrepo/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bucketrepo-bucketrepo
+  labels:
+    draft: draft-app
+    chart: "bucketrepo-0.1.39"
+    gitops.jenkins-x.io/pipeline: 'environment'
+  namespace: jx
+  annotations:
+    wave.pusher.com/update-on-config-change: 'true'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bucketrepo-bucketrepo
+  template:
+    metadata:
+      labels:
+        draft: draft-app
+        app: bucketrepo-bucketrepo
+      annotations:
+        checksum/config: "c5c8d8ec9341062a7f8870e772a8f024af6b20b321453a9d4eca171decc3b858"
+    spec:
+      containers:
+      - name: bucketrepo
+        image: "gcr.io/jenkinsxio/bucketrepo:0.1.39"
+        imagePullPolicy: IfNotPresent
+        command: ["/bucketrepo"]
+        args:
+        - "-config-path=/config"
+        - "-log-level=info"
+        env:
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        volumeMounts:
+        - name: config
+          mountPath: /config
+          readOnly: true
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: bucketrepo-bucketrepo
+      volumes:
+      - name: config
+        secret:
+          secretName: bucketrepo-config
