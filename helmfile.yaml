@@ -23,7 +23,6 @@ releases:
   values:
   - versionStream/apps/jenkins-x/bucketrepo/values.yaml.gotmpl
 - chart: jenkins-x/jxboot-helmfile-resources
-  version: 0.0.268
   name: jxboot-helmfile-resources
   namespace: jx
   values:

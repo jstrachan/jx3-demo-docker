@@ -48,9 +48,9 @@ environments:
   key: production
 gitops: true
 ingress:
-  domain: b0c548429dc0.ngrok.io
+  domain: ""
   externalDNS: false
-  namespaceSubDomain: -jx.
+  namespaceSubDomain: ""
   tls:
     email: ""
     enabled: false
