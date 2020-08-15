@@ -16,7 +16,7 @@ jxRequirements:
     gitName: github
     gitServer: https://github.com
     namespace: jx
-    provider: kubernetes
+    provider: kind
   environments:
   - ingress:
       domain: ""
@@ -51,6 +51,7 @@ jxRequirements:
   ingress:
     domain: ""
     externalDNS: false
+    ignoreLoadBalancer: true
     namespaceSubDomain: -jx.
     tls:
       email: ""
