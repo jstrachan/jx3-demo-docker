@@ -2,6 +2,8 @@ FETCH_DIR := build/base
 TMP_TEMPLATE_DIR := build/tmp
 OUTPUT_DIR := config-root
 
+VAULT_ADDR ?= https://vault.secret-infra:8200
+
 .PHONY: clean
 clean:
 	rm -rf build $(OUTPUT_DIR)
@@ -12,19 +14,22 @@ init:
 	mkdir -p $(OUTPUT_DIR)/namespaces/jx
 	cp -r src/* build
 	mkdir -p $(FETCH_DIR)/cluster/crds
-	mkdir -p $(FETCH_DIR)/namespaces/nginx
-	mkdir -p $(FETCH_DIR)/namespaces/vault-infra
+	#mkdir -p $(FETCH_DIR)/namespaces/nginx
+	#mkdir -p $(FETCH_DIR)/namespaces/jx-cli:0.0.330
 
 
 .PHONY: fetch
 fetch: init
-	# TODO do we need this?
+	# lets configure the cluster gitops repository URL on the requirements if its missing
 	jx gitops repository --source-dir $(OUTPUT_DIR)/namespaces
 
 	# lets resolve chart versions and values from the version stream
 	jx gitops helmfile resolve
 
-	# not sure why we need this...
+	# lets make sure we are using the latest jx-cli in the git operator Job
+	jx gitops image -s .jx/git-operator
+
+	# not sure why we need this but it avoids issues...
 	helm repo add jx http://chartmuseum.jenkins-x.io
 
 	# generate the yaml from the charts in helmfile.yaml
@@ -33,12 +38,13 @@ fetch: init
 	# split the files into one file per resource
 	jx gitops split --dir $(TMP_TEMPLATE_DIR)
 
-	# convert k8s Secrets => ExternalSecret resources
-	jx gitops secretsmapping --dir $(TMP_TEMPLATE_DIR)
-
 	# move the templated files to correct cluster or namespace folder
 	# setting the namespace on namespaced resources
 	jx gitops helmfile move --dir $(TMP_TEMPLATE_DIR) --output-dir $(OUTPUT_DIR)
+
+	# convert k8s Secrets => ExternalSecret resources using secret mapping + schemas
+	# see: https://github.com/jenkins-x/jx-secret#mappings
+	jx secret convert --dir $(OUTPUT_DIR)
 
 	# old approach
 	#jx gitops jx-apps template --template-values src/fake-secrets.yaml.txt -o $(OUTPUT_DIR)/namespaces
@@ -65,7 +71,8 @@ pre-build:
 .PHONY: post-build
 post-build:
 	jx gitops scheduler -d config-root/namespaces/jx -o src/base/namespaces/jx/lighthouse-config
-	jx gitops ingress
+	# TODO do we need this?
+	#jx gitops ingress
 	jx gitops label --dir $(OUTPUT_DIR) gitops.jenkins-x.io/pipeline=environment
 	jx gitops annotate --dir  $(OUTPUT_DIR)/namespaces --kind Deployment wave.pusher.com/update-on-config-change=true
 
@@ -106,6 +113,16 @@ verify: verify-ingress
 .PHONY: verify-ignore
 verify-ignore: verify-ingress-ignore
 
+.PHONY: secrets-populate
+secrets-populate:
+	# lets populate any missing secrets we have a generator defined for in the `.jx/gitops/secret-schema.yaml` file
+	# they can be modified/regenerated at any time via `jx secret edit`
+	-VAULT_ADDR=$(VAULT_ADDR) jx secret populate
+
+.PHONY: secrets-wait
+secrets-wait:
+	# lets wait for the ExternalSecrets service to populate the mandatory Secret resources
+	VAULT_ADDR=$(VAULT_ADDR) jx secret wait
 
 .PHONY: git-setup
 git-setup:
@@ -117,7 +134,7 @@ regen-check:
 	jx gitops condition --last-commit-msg-prefix '!Merge pull request' -- make git-setup resolve-metadata all double-apply verify-ingress-ignore commit push
 
 	# lets run this twice to ensure that ingress is setup after applying nginx if not using a custom domain yet
-	jx gitops condition --last-commit-msg-prefix '!Merge pull request' -- make verify-ingress-ignore all verify-ignore commit push
+	jx gitops condition --last-commit-msg-prefix '!Merge pull request' -- make verify-ingress-ignore all verify-ignore secrets-populate commit push secrets-wait
 
 .PHONY: apply
 apply: regen-check
@@ -133,6 +150,10 @@ double-apply:
 
 .PHONY: resolve-metadata
 resolve-metadata:
+	# lets merge in any output from Terraform in the ConfigMap default/terraform-jx-requirements if it exists
+	jx gitops requirements merge
+
+	# lets resolve any requirements
 	jx gitops requirements resolve -n
 
 .PHONY: commit
