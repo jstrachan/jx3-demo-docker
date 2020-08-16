@@ -16,6 +16,7 @@ cluster:
   gitServer: https://github.com
   namespace: jx
   provider: kind
+  registry: docker-registry:5000
 environments:
 - ingress:
     domain: ""
