@@ -3,7 +3,7 @@ Resources:
   CFNJenkinsXPolicies:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: !Join [ "-", [ CFNTektonBotPolicy, Ref: PoliciesSuffixParameter] ]
+      ManagedPolicyName: !Join ["-", [CFNTektonBotPolicy, {Ref: PoliciesSuffixParameter}]]
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -24,7 +24,7 @@ Resources:
   CFNExternalDNSPolicies:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: !Join [ "-", [ CFNExternalDNSPolicy, Ref: PoliciesSuffixParameter] ]
+      ManagedPolicyName: !Join ["-", [CFNExternalDNSPolicy, {Ref: PoliciesSuffixParameter}]]
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -40,7 +40,7 @@ Resources:
   CFNCertManagerPolicies:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: !Join [ "-", [ CFNCertManagerPolicy, Ref: PoliciesSuffixParameter] ]
+      ManagedPolicyName: !Join ["-", [CFNCertManagerPolicy, {Ref: PoliciesSuffixParameter}]]
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -66,16 +66,16 @@ Outputs:
       Ref: CFNJenkinsXPolicies
     Description: The ARN of the created policy
     Export:
-      Name: !Join [ "-", [ TektonBotPolicy, Ref: PoliciesSuffixParameter] ]
+      Name: !Join ["-", [TektonBotPolicy, {Ref: PoliciesSuffixParameter}]]
   CFNExternalDNSPolicy:
     Value:
       Ref: CFNExternalDNSPolicies
     Description: The ARN of the created policy
     Export:
-      Name: !Join [ "-", [ ExternalDNSPolicy, Ref: PoliciesSuffixParameter] ]
+      Name: !Join ["-", [ExternalDNSPolicy, {Ref: PoliciesSuffixParameter}]]
   CFNCertManagerPolicy:
     Value:
       Ref: CFNCertManagerPolicies
     Description: The ARN of the created policy
     Export:
-      Name: !Join [ "-", [ CertManagerPolicy, Ref: PoliciesSuffixParameter] ]
+      Name: !Join ["-", [CertManagerPolicy, {Ref: PoliciesSuffixParameter}]]

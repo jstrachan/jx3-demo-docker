@@ -14,7 +14,7 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 2
         WriteCapacityUnits: 2
-      TableName: !Join [ "_", [ Ref: DynamoDBTableName, Ref: ResourcesSuffixParameter ] ]
+      TableName: !Join ["_", [{Ref: DynamoDBTableName}, {Ref: ResourcesSuffixParameter}]]
       Tags:
       - Key: Name
         Value: vault-dynamo-db-table
@@ -37,7 +37,7 @@ Resources:
   AWSS3Bucket:
     Properties:
       AccessControl: Private
-      BucketName: !Join [ "-", [ Ref: S3BucketName, Ref: ResourcesSuffixParameter ] ]
+      BucketName: !Join ["-", [{Ref: S3BucketName}, {Ref: ResourcesSuffixParameter}]]
       VersioningConfiguration:
         Status: Suspended
     Type: AWS::S3::Bucket
@@ -93,13 +93,13 @@ Resources:
           Sid: KMS
         Version: '2012-10-17'
       ManagedPolicyName: !Sub
-        - "vault_${AWS::StackName}-${AWS::Region}-${Suffix}"
-        - { Suffix: !Ref ResourcesSuffixParameter }
+      - "vault_${AWS::StackName}-${AWS::Region}-${Suffix}"
+      - {Suffix: !Ref ResourcesSuffixParameter}
       Users:
-       - !Ref IAMUser
+      - !Ref IAMUser
     Type: AWS::IAM::ManagedPolicy
-Parameters: 
-  ResourcesSuffixParameter: 
+Parameters:
+  ResourcesSuffixParameter:
     Type: String
     Description: A suffix so we can create different resources on each execution
   S3BucketName:
@@ -130,4 +130,3 @@ Outputs:
     Description: The ARN of the created DynamoDB table
     Export:
       Name: !Sub "${AWS::StackName}-AWSDynamoDBTable"
-
