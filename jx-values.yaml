@@ -59,7 +59,7 @@ jxRequirements:
       enabled: false
       production: false
   kaniko: true
-  repository: nexus
+  repository: bucketrepo
   secretStorage: vault
   storage:
     backup:
