@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: jstrachan
+  repo: godemo60
+  url: https://github.com/jstrachan/godemo60.git
+  version: ""
+  versionURL: ""
