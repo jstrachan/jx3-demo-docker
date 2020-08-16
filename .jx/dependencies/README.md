@@ -2,4 +2,4 @@
 
 Dependency | Sources | Version | Mismatched versions
 ---------- | ------- | ------- | -------------------
-[jstrachan/godemo61](https://github.com/jstrachan/godemo61.git) |  | []() | 
+[jstrachan/godemo60](https://github.com/jstrachan/godemo60.git) |  | []() | 
