@@ -22,6 +22,7 @@ releases:
   namespace: jx
   values:
   - versionStream/charts/jenkins-x/jxboot-helmfile-resources/values.yaml.gotmpl
+  - charts/jenkins-x/jxboot-helmfile-resources/values.yaml
 - chart: external-secrets/kubernetes-external-secrets
   version: 4.0.0
   name: kubernetes-external-secrets
