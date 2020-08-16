@@ -108,7 +108,7 @@ verify-install:
 .PHONY: verify
 verify: verify-ingress
 	jx verify env
-	#jx verify webhooks --verbose --warn-on-fail
+	jx verify webhooks --verbose --warn-on-fail
 
 .PHONY: verify-ignore
 verify-ignore: verify-ingress-ignore
