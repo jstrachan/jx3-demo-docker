@@ -11,7 +11,7 @@ data:
   pod: "apiVersion: v1\nkind: Pod\nmetadata:\n  name: jenkins-jx-base\n  labels:\n
     \   jenkins.io/kind: build-pod\n  annotations:\n    jenkins-x.io/devpodPorts:
     \nspec:\n  serviceAccount: tekton-sa\n  nodeSelector:\n  volumes:\n  - name: workspace-volume\n
-    \   emptyDir: {}\n  containers:\n  - name: jx-base\n    image: gcr.io/jenkinsxio/builder-jx:2.1.120-739\n
+    \   emptyDir: {}\n  containers:\n  - name: jx-base\n    image: gcr.io/jenkinsxio/builder-jx:2.1.132-751\n
     \   args:\n    - cat\n    command:\n    - /bin/sh\n    - -c\n    workingDir: /home/jenkins\n
     \   securityContext:\n      privileged: true\n    tty: true\n    env:\n    - name:
     DOCKER_REGISTRY\n      valueFrom:\n        configMapKeyRef:\n          name: jenkins-x-docker-registry\n
