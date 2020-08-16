@@ -1,0 +1,21 @@
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-credential-initializer-jkzsz[0m
+{"level":"info","ts":1597561783.8642943,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597561783.8661385,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-working-dir-initializer-shxjc[0m
+{"level":"info","ts":1597561784.4068086,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1597561784.4096107,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-git-source-jstrachan-jx3-demo-docker-maste-czxkm-cb6px[0m
+{"level":"info","ts":1597561789.6055803,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597561792.0020866,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*********/**3-demo-docker.git @ v0.0.2 in path /workspace/source"}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:5219819dd141fdc3836cb8239db9ac5b19ab1ba2
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-czxkm-2[0m stage [32mrelease[0m and container [32mstep-release[0m
+make: Nothing to be done for 'release'.
