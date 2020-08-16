@@ -9,4 +9,4 @@ metadata:
   labels:
     gitops.jenkins-x.io/pipeline: 'environment'
 data:
-  docker.registry: docker-registry
+  docker.registry: docker-registry:80
