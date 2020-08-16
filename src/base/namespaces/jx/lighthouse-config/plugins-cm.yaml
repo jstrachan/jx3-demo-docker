@@ -6,6 +6,14 @@ data:
       repos:
       - jstrachan/jx3-demo-docker
       require_self_approval: true
+    - lgtm_acts_as_approve: true
+      repos:
+      - jstrachan/godemo60
+      require_self_approval: true
+    - lgtm_acts_as_approve: true
+      repos:
+      - jstrachan/godemo61
+      require_self_approval: true
     blunderbuss: {}
     cat: {}
     cherry_pick_unapproved: {}
@@ -21,6 +29,38 @@ data:
       additional_labels: null
     owners: {}
     plugins:
+      jstrachan/godemo60:
+      - approve
+      - assign
+      - blunderbuss
+      - help
+      - hold
+      - lgtm
+      - lifecycle
+      - override
+      - size
+      - trigger
+      - wip
+      - heart
+      - cat
+      - dog
+      - pony
+      jstrachan/godemo61:
+      - approve
+      - assign
+      - blunderbuss
+      - help
+      - hold
+      - lgtm
+      - lifecycle
+      - override
+      - size
+      - trigger
+      - wip
+      - heart
+      - cat
+      - dog
+      - pony
       jstrachan/jx3-demo-docker:
       - config-updater
       - approve
@@ -51,6 +91,14 @@ data:
     - repos:
       - jstrachan/jx3-demo-docker
       trusted_org: todo
+    - repos:
+      - jstrachan/godemo60
+      trusted_org: todo
+    - repos:
+      - jstrachan/godemo61
+      trusted_org: todo
+    welcome:
+    - message_template: Welcome
 kind: ConfigMap
 metadata:
   creationTimestamp: null
