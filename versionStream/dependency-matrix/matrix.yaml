@@ -549,8 +549,8 @@ dependencies:
   owner: jenkins-x
   repo: jx-gitops
   url: https://github.com/jenkins-x/jx-gitops
-  version: 0.0.184
-  versionURL: https://github.com/jenkins-x/jx-gitops/releases/tag/v0.0.184
+  version: 0.0.186
+  versionURL: https://github.com/jenkins-x/jx-gitops/releases/tag/v0.0.186
 - host: github.com
   owner: jenkins-x
   repo: jx-promote
@@ -585,8 +585,8 @@ dependencies:
   owner: jenkins-x
   repo: jx-cli
   url: https://github.com/jenkins-x/jx-cli
-  version: 0.0.360
-  versionURL: https://github.com/jenkins-x/jx-cli/releases/tag/v0.0.360
+  version: 0.0.366
+  versionURL: https://github.com/jenkins-x/jx-cli/releases/tag/v0.0.366
 - host: github.com
   owner: jenkins-x
   repo: jx-project
@@ -597,8 +597,8 @@ dependencies:
   owner: jenkins-x
   repo: jx-verify
   url: https://github.com/jenkins-x/jx-verify
-  version: 0.0.16
-  versionURL: https://github.com/jenkins-x/jx-verify/releases/tag/v0.0.16
+  version: 0.0.18
+  versionURL: https://github.com/jenkins-x/jx-verify/releases/tag/v0.0.18
 - host: github.com
   owner: jenkins-x
   repo: jx-pipeline
@@ -615,8 +615,8 @@ dependencies:
   owner: jenkins-x
   repo: jx-secret
   url: https://github.com/jenkins-x/jx-secret
-  version: 0.0.74
-  versionURL: https://github.com/jenkins-x/jx-secret/releases/tag/v0.0.74
+  version: 0.0.78
+  versionURL: https://github.com/jenkins-x/jx-secret/releases/tag/v0.0.78
 - host: github.com
   owner: jenkins-x
   repo: jx-preview
