@@ -81,5 +81,9 @@ releases:
   version: 0.0.58
   name: godemo61
   namespace: jx-staging
+- chart: dev/godemo60
+  version: 0.0.10
+  name: godemo60
+  namespace: jx-staging
 templates: {}
 missingFileHandler: ""
