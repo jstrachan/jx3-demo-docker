@@ -2,3 +2,8 @@ ingress:
   # allows you to specify custom hosts
   customHosts:
     hook: "7f7d828bc570.ngrok.io"
+
+kaniko:
+  # lets support insecure docker registries so that we
+  # can use the local docker-registry chart
+  flags: "--insecure"
