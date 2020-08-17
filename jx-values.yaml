@@ -18,7 +18,7 @@ jxRequirements:
     gitServer: https://github.com
     namespace: jx
     provider: docker
-    registry: docker-registry-jx.127.0.0.1.xip.io
+    registry: docker-registry-jx.192.168.1.202.xip.io
   environments:
   - ingress:
       domain: ""
@@ -51,7 +51,7 @@ jxRequirements:
     key: production
   gitops: true
   ingress:
-    domain: 127.0.0.1.xip.io
+    domain: 192.168.1.202.xip.io
     externalDNS: false
     ignoreLoadBalancer: true
     namespaceSubDomain: -jx.

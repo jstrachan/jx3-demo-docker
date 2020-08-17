@@ -24,7 +24,7 @@ spec:
       skipUnknownContexts: false
     prStatusBaseUrl: ""
     squashLabel: ""
-    targetUrl: http://deck-jx.127.0.0.1.xip.io
+    targetUrl: http://deck-jx.192.168.1.202.xip.io
   plugins:
     entries:
     - config-updater

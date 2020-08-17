@@ -15,4 +15,4 @@ spec:
       - backend:
           serviceName: bucketrepo
           servicePort: 80
-    host: bucketrepo-jx.127.0.0.1.xip.io
+    host: bucketrepo-jx.192.168.1.202.xip.io
