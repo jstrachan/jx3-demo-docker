@@ -13,7 +13,7 @@ metadata:
   namespace: jx
 spec:
   rules:
-  - host: docker-registry-jx.cluster.local
+  - host: docker-registry-jx.127.0.0.1.xip.io
     http:
       paths:
       - path: /

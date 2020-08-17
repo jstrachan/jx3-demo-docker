@@ -51,7 +51,7 @@ jxRequirements:
     key: production
   gitops: true
   ingress:
-    domain: ""
+    domain: 127.0.0.1.xip.io
     externalDNS: false
     ignoreLoadBalancer: true
     namespaceSubDomain: -jx.

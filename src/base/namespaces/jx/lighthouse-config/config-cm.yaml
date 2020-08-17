@@ -104,7 +104,7 @@ data:
         - jstrachan/jx3-demo-docker
         - jstrachan/godemo60
         - jstrachan/godemo61
-      target_url: http://deck-jx.
+      target_url: http://deck-jx.127.0.0.1.xip.io
 kind: ConfigMap
 metadata:
   creationTimestamp: null
