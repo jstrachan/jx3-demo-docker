@@ -1,0 +1,21 @@
+# Source: godemo61/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: godemo61
+  labels:
+    chart: "godemo61-0.0.58"
+    gitops.jenkins-x.io/pipeline: 'environment'
+  annotations:
+    fabric8.io/expose: "true"
+    fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx'
+  namespace: jx-staging
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: godemo61-godemo61

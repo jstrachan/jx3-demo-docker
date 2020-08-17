@@ -1,0 +1,54 @@
+# Source: godemo61/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: godemo61-godemo61
+  labels:
+    draft: draft-app
+    chart: "godemo61-0.0.58"
+    gitops.jenkins-x.io/pipeline: 'environment'
+  namespace: jx-staging
+  annotations:
+    wave.pusher.com/update-on-config-change: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: godemo61-godemo61
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        draft: draft-app
+        app: godemo61-godemo61
+    spec:
+      containers:
+      - name: godemo61
+        image: "10.107.115.36/myproject/godemo61:0.0.58"
+        imagePullPolicy: IfNotPresent
+        env:
+        envFrom: null
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
+      terminationGracePeriodSeconds:
