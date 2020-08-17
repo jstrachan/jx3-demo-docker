@@ -66,6 +66,7 @@ releases:
   namespace: jx
   values:
   - versionStream/charts/stable/docker-registry/values.yaml.gotmpl
+  - charts/jenkins-x/jxboot-helmfile-resources/values.yaml
 - chart: banzaicloud-stable/vault-operator
   version: 1.3.0
   name: vault-operator
