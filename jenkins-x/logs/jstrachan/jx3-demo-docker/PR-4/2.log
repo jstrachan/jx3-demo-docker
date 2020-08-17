@@ -1,0 +1,1279 @@
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-credential-initializer-bf8pl[0m
+{"level":"info","ts":1597654842.3814757,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597654842.3882942,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-working-dir-initializer-2cdgj[0m
+{"level":"info","ts":1597654843.29334,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1597654843.294791,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-git-source-jstrachan-jx3-demo-docker-pr-4-wnv67-dwnsd[0m
+{"level":"info","ts":1597654848.4620028,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597654849.997927,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned ********************************************.git @ master in path /workspace/source"}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:d730348d62f65e40b7958b003bc737afa03e4422,4:cfe94df5718e13e44486ce9bbdbac458f21c2a3d
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow cfe94df5718e13e44486ce9bbdbac458f21c2a3d: d730348d62f65e40b7958b003bc737afa03e4422:
+DEBUG: ran git fetch --unshallow origin cfe94df5718e13e44486ce9bbdbac458f21c2a3d: d730348d62f65e40b7958b003bc737afa03e4422: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard d730348d62f65e40b7958b003bc737afa03e4422
+DEBUG: ran git reset --hard d730348d62f65e40b7958b003bc737afa03e4422 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge cfe94df5718e13e44486ce9bbdbac458f21c2a3d
+DEBUG: ran git merge cfe94df5718e13e44486ce9bbdbac458f21c2a3d in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e d730348d62f65e40b7958b003bc737afa03e4422..HEAD
+Merged SHA cfe94df5718e13e44486ce9bbdbac458f21c2a3d with commit message 'chore: regenerated' into base branch master
+Merged SHA 6d659a9f506dfef7f5957617a8a6adfe335ef927 with commit message 'chore: Promote godemo60 to version 0.0.10' into base branch master
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-pr-4-wnv67-2[0m stage [32mpr-checks[0m and container [32mstep-pr[0m
+rm -rf build config-root
+mkdir -p build/base
+mkdir -p build/tmp
+mkdir -p config-root/namespaces/**
+cp -r src/* build
+mkdir -p build/base/cluster/crds
+#mkdir -p build/base/namespaces/nginx
+#mkdir -p build/base/namespaces/**-cli:0.0.330
+# lets configure the cluster gitops repository URL on the requirements if its missing
+** gitops repository --source-dir config-root/namespaces
+modifying **-requirements.yml in dir . to set the dev environment git repository to be *********/**3-demo-docker
+saving **-requirements.yml
+discovered git URL ********************************************.git replacing it in the dev Environment and Source Repository in dir config-root/namespaces
+# lets resolve chart versions and values from the version stream
+** gitops helmfile resolve
+generated helm YAML file from ** requirements at **-values.yaml
+resolving versions and values files from the version stream https://github.com/jenkins-x/**r-versions.git ref master in dir versionStream
+WARNING: could not find a stable version from charts of stable/docker-registry from versionStream
+For background see: https://jenkins-x.io/docs/concepts/version-stream/
+Please lock this version down via the command: ** step create pr versions -k charts -n stable/docker-registry
+resolved chart stable/docker-registry version 
+WARNING: could not find version for chart stable/docker-registry so using latest found in helm repository https://kubernetes-charts.storage.googleapis.com
+WARNING: could not find a stable version from charts of **-labs/vault-instance from versionStream
+For background see: https://jenkins-x.io/docs/concepts/version-stream/
+Please lock this version down via the command: ** step create pr versions -k charts -n **-labs/vault-instance
+resolved chart **-labs/vault-instance version 
+WARNING: could not find version for chart **-labs/vault-instance so using latest found in helm repository https://storage.googleapis.com/jenkinsxio-labs-private/charts
+WARNING: could not find a stable version from charts of dev/godemo61 from versionStream
+For background see: https://jenkins-x.io/docs/concepts/version-stream/
+Please lock this version down via the command: ** step create pr versions -k charts -n dev/godemo61
+WARNING: could not find version for chart dev/godemo61 so using latest found in helm repository http://bucketrepo/bucketrepo/charts/
+WARNING: could not find a stable version from charts of dev/godemo60 from versionStream
+For background see: https://jenkins-x.io/docs/concepts/version-stream/
+Please lock this version down via the command: ** step create pr versions -k charts -n dev/godemo60
+WARNING: could not find version for chart dev/godemo60 so using latest found in helm repository http://bucketrepo/bucketrepo/charts/
+# lets make sure we are using the latest **-cli in the git operator Job
+** gitops image -s .**/git-operator
+modify spec.template.spec.initContainers.image: gcr.io/jenkinsxio-labs-private/**-cli:0.0.366
+ => gcr.io/jenkinsxio-labs-private/**-cli:0.0.366 for file .**/git-operator/job.yaml
+modify spec.template.spec.containers.image: gcr.io/jenkinsxio-labs-private/**-cli:0.0.366
+ => gcr.io/jenkinsxio-labs-private/**-cli:0.0.366 for file .**/git-operator/job.yaml
+# not sure why we need this but it avoids issues...
+helm repo add ** http://chartmuseum.jenkins-x.io
+"**" has been added to your repositories
+# generate the yaml from the charts in helmfile.yaml
+helmfile --debug template  -args="--include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl" --output-dir build/tmp
+processing file "helmfile.yaml" in directory "."
+first-pass rendering starting for "helmfile.yaml.part.0": inherited=&{default map[] map[]}, overrode=<nil>
+first-pass uses: &{default map[] map[]}
+first-pass rendering output of "helmfile.yaml.part.0":
+ 0: filepath: ""
+ 1: environments:
+ 2:   default:
+ 3:     values:
+ 4:     - **-values.yaml
+ 5:     - src/fake-secrets.yaml.gotmpl
+ 6: repositories:
+ 7: - name: jenkins-x
+ 8:   url: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+ 9: - name: external-secrets
+10:   url: https://godaddy.github.io/kubernetes-external-secrets
+11: - name: **-labs
+12:   url: https://storage.googleapis.com/jenkinsxio-labs-private/charts
+13: - name: stable
+14:   url: https://kubernetes-charts.storage.googleapis.com
+15: - name: banzaicloud-stable
+16:   url: https://kubernetes-charts.banzaicloud.com
+17: - name: dev
+18:   url: http://bucketrepo/bucketrepo/charts/
+19: releases:
+20: - chart: jenkins-x/**boot-helmfile-resources
+21:   version: 0.0.279
+22:   name: **boot-helmfile-resources
+23:   namespace: **
+24:   values:
+25:   - versionStream/charts/jenkins-x/**boot-helmfile-resources/values.yaml.gotmpl
+26:   - charts/jenkins-x/**boot-helmfile-resources/values.yaml
+27: - chart: external-secrets/kubernetes-external-secrets
+28:   version: 4.0.0
+29:   name: kubernetes-external-secrets
+30:   namespace: secret-infra
+31:   values:
+32:   - versionStream/charts/external-secrets/kubernetes-external-secrets/values.yaml.gotmpl
+33: - chart: **-labs/jenkins-x-crds
+34:   version: 0.0.7
+35:   name: jenkins-x-crds
+36:   namespace: **
+37:   values:
+38:   - versionStream/charts/**-labs/jenkins-x-crds/values.yaml
+39: - chart: stable/nginx-ingress
+40:   version: 1.39.1
+41:   name: nginx-ingress
+42:   namespace: nginx
+43:   values:
+44:   - versionStream/charts/stable/nginx-ingress/values.yaml.gotmpl
+45: - chart: jenkins-x/tekton
+46:   version: 0.0.56
+47:   name: tekton
+48:   namespace: **
+49:   values:
+50:   - versionStream/charts/jenkins-x/tekton/values.yaml.gotmpl
+51: - chart: jenkins-x/lighthouse
+52:   version: 0.0.683
+53:   name: lighthouse
+54:   namespace: **
+55:   values:
+56:   - versionStream/charts/jenkins-x/lighthouse/values.yaml.gotmpl
+57: - chart: jenkins-x/bucketrepo
+58:   version: 0.1.39
+59:   name: bucketrepo
+60:   namespace: **
+61:   values:
+62:   - versionStream/charts/jenkins-x/bucketrepo/values.yaml.gotmpl
+63: - chart: stable/docker-registry
+64:   name: docker-registry
+65:   namespace: **
+66:   values:
+67:   - versionStream/charts/stable/docker-registry/values.yaml.gotmpl
+68: - chart: banzaicloud-stable/vault-operator
+69:   version: 1.3.0
+70:   name: vault-operator
+71:   namespace: secret-infra
+72: - chart: **-labs/vault-instance
+73:   name: vault-instance
+74:   namespace: secret-infra
+75: - chart: **-labs/pusher-wave
+76:   version: 1.0.0
+77:   name: pusher-wave
+78:   namespace: **
+79: - chart: dev/godemo61
+80:   version: 0.0.58
+81:   name: godemo61
+82:   namespace: **-staging
+83: - chart: dev/godemo60
+84:   version: 0.0.10
+85:   name: godemo60
+86:   namespace: **-staging
+87: templates: {}
+88: missingFileHandler: ""
+89: 
+
+envvals_loader: loaded **-values.yaml:map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse]]
+envvals_loader: loaded src/fake-secrets.yaml.gotmpl:map[secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]]
+first-pass produced: &{default map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse] secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]] map[]}
+first-pass rendering result of "helmfile.yaml.part.0": {default map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse] secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]] map[]}
+vals:
+map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse] secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]]
+defaultVals:[]
+second-pass rendering result of "helmfile.yaml.part.0":
+ 0: filepath: ""
+ 1: environments:
+ 2:   default:
+ 3:     values:
+ 4:     - **-values.yaml
+ 5:     - src/fake-secrets.yaml.gotmpl
+ 6: repositories:
+ 7: - name: jenkins-x
+ 8:   url: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+ 9: - name: external-secrets
+10:   url: https://godaddy.github.io/kubernetes-external-secrets
+11: - name: **-labs
+12:   url: https://storage.googleapis.com/jenkinsxio-labs-private/charts
+13: - name: stable
+14:   url: https://kubernetes-charts.storage.googleapis.com
+15: - name: banzaicloud-stable
+16:   url: https://kubernetes-charts.banzaicloud.com
+17: - name: dev
+18:   url: http://bucketrepo/bucketrepo/charts/
+19: releases:
+20: - chart: jenkins-x/**boot-helmfile-resources
+21:   version: 0.0.279
+22:   name: **boot-helmfile-resources
+23:   namespace: **
+24:   values:
+25:   - versionStream/charts/jenkins-x/**boot-helmfile-resources/values.yaml.gotmpl
+26:   - charts/jenkins-x/**boot-helmfile-resources/values.yaml
+27: - chart: external-secrets/kubernetes-external-secrets
+28:   version: 4.0.0
+29:   name: kubernetes-external-secrets
+30:   namespace: secret-infra
+31:   values:
+32:   - versionStream/charts/external-secrets/kubernetes-external-secrets/values.yaml.gotmpl
+33: - chart: **-labs/jenkins-x-crds
+34:   version: 0.0.7
+35:   name: jenkins-x-crds
+36:   namespace: **
+37:   values:
+38:   - versionStream/charts/**-labs/jenkins-x-crds/values.yaml
+39: - chart: stable/nginx-ingress
+40:   version: 1.39.1
+41:   name: nginx-ingress
+42:   namespace: nginx
+43:   values:
+44:   - versionStream/charts/stable/nginx-ingress/values.yaml.gotmpl
+45: - chart: jenkins-x/tekton
+46:   version: 0.0.56
+47:   name: tekton
+48:   namespace: **
+49:   values:
+50:   - versionStream/charts/jenkins-x/tekton/values.yaml.gotmpl
+51: - chart: jenkins-x/lighthouse
+52:   version: 0.0.683
+53:   name: lighthouse
+54:   namespace: **
+55:   values:
+56:   - versionStream/charts/jenkins-x/lighthouse/values.yaml.gotmpl
+57: - chart: jenkins-x/bucketrepo
+58:   version: 0.1.39
+59:   name: bucketrepo
+60:   namespace: **
+61:   values:
+62:   - versionStream/charts/jenkins-x/bucketrepo/values.yaml.gotmpl
+63: - chart: stable/docker-registry
+64:   name: docker-registry
+65:   namespace: **
+66:   values:
+67:   - versionStream/charts/stable/docker-registry/values.yaml.gotmpl
+68: - chart: banzaicloud-stable/vault-operator
+69:   version: 1.3.0
+70:   name: vault-operator
+71:   namespace: secret-infra
+72: - chart: **-labs/vault-instance
+73:   name: vault-instance
+74:   namespace: secret-infra
+75: - chart: **-labs/pusher-wave
+76:   version: 1.0.0
+77:   name: pusher-wave
+78:   namespace: **
+79: - chart: dev/godemo61
+80:   version: 0.0.58
+81:   name: godemo61
+82:   namespace: **-staging
+83: - chart: dev/godemo60
+84:   version: 0.0.10
+85:   name: godemo60
+86:   namespace: **-staging
+87: templates: {}
+88: missingFileHandler: ""
+89: 
+
+envvals_loader: loaded **-values.yaml:map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse]]
+envvals_loader: loaded src/fake-secrets.yaml.gotmpl:map[secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]]
+merged environment: &{default map[**Requirements:map[autoUpdate:map[enabled:false schedule:] bootConfigURL:https://github.com/jenkins-x/**3-boot-config buildPacks:map[buildPackLibrary:map[gitRef:master gitURL:https://github.com/jenkins-x/**r-packs-kubernetes.git]] cluster:map[chartRepository:http://bucketrepo/bucketrepo/charts/ clusterName:kind devEnvApprovers:[todo] environmentGitOwner:todo gitKind:github gitName:github gitServer:https://github.com namespace:** provider:docker registry:10.107.115.36] environments:[map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:dev owner:********* repository:**3-demo-docker] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:staging] map[ingress:map[domain: externalDNS:false namespaceSubDomain: tls:map[email: enabled:false production:false]] key:production]] gitops:true ingress:map[domain:127.0.0.1.xip.io externalDNS:false ignoreLoadBalancer:true namespaceSubDomain:-**. tls:map[email: enabled:false production:false]] kaniko:true repository:bucketrepo secretStorage:vault storage:map[backup:map[enabled:false url:] logs:map[enabled:false url:] reports:map[enabled:false url:] repository:map[enabled:false url:]] vault:map[] velero:map[schedule: ttl:] versionStream:map[ref:master url:https://github.com/jenkins-x/**r-versions.git] webhook:lighthouse] secrets:map[*****User:map[password:todo username:todo] docker:map[password:todo url: username:todo] hmacToken:todo pipelineUser:map[email:jenkins-x@googlegroups.com token:todo username:jenkins-x-labs-bot]]] map[]}
+Adding repo jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
+exec: helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
+exec: helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io: "jenkins-x" has been added to your repositories
+
+"jenkins-x" has been added to your repositories
+
+Adding repo external-secrets https://godaddy.github.io/kubernetes-external-secrets
+exec: helm repo add external-secrets https://godaddy.github.io/kubernetes-external-secrets
+exec: helm repo add external-secrets https://godaddy.github.io/kubernetes-external-secrets: "external-secrets" has been added to your repositories
+
+"external-secrets" has been added to your repositories
+
+Adding repo **-labs https://storage.googleapis.com/jenkinsxio-labs-private/charts
+exec: helm repo add **-labs https://storage.googleapis.com/jenkinsxio-labs-private/charts
+exec: helm repo add **-labs https://storage.googleapis.com/jenkinsxio-labs-private/charts: "**-labs" has been added to your repositories
+
+"**-labs" has been added to your repositories
+
+Adding repo stable https://kubernetes-charts.storage.googleapis.com
+exec: helm repo add stable https://kubernetes-charts.storage.googleapis.com
+exec: helm repo add stable https://kubernetes-charts.storage.googleapis.com: "stable" has been added to your repositories
+
+"stable" has been added to your repositories
+
+Adding repo banzaicloud-stable https://kubernetes-charts.banzaicloud.com
+exec: helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com
+exec: helm repo add banzaicloud-stable https://kubernetes-charts.banzaicloud.com: "banzaicloud-stable" has been added to your repositories
+
+"banzaicloud-stable" has been added to your repositories
+
+Adding repo dev http://bucketrepo/bucketrepo/charts/
+exec: helm repo add dev http://bucketrepo/bucketrepo/charts/
+exec: helm repo add dev http://bucketrepo/bucketrepo/charts/: "dev" has been added to your repositories
+
+"dev" has been added to your repositories
+
+Fetching jenkins-x/**boot-helmfile-resources
+exec: helm fetch jenkins-x/**boot-helmfile-resources --version 0.0.279 --untar --untardir /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279
+Fetching external-secrets/kubernetes-external-secrets
+exec: helm fetch external-secrets/kubernetes-external-secrets --version 4.0.0 --untar --untardir /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0
+exec: helm fetch external-secrets/kubernetes-external-secrets --version 4.0.0 --untar --untardir /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0: 
+Fetching **-labs/jenkins-x-crds
+exec: helm fetch **-labs/jenkins-x-crds --version 0.0.7 --untar --untardir /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7
+exec: helm fetch **-labs/jenkins-x-crds --version 0.0.7 --untar --untardir /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7: 
+Fetching stable/nginx-ingress
+exec: helm fetch stable/nginx-ingress --version 1.39.1 --untar --untardir /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1
+exec: helm fetch jenkins-x/**boot-helmfile-resources --version 0.0.279 --untar --untardir /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279: 
+Fetching jenkins-x/tekton
+exec: helm fetch jenkins-x/tekton --version 0.0.56 --untar --untardir /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56
+exec: helm fetch stable/nginx-ingress --version 1.39.1 --untar --untardir /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1: 
+Fetching jenkins-x/lighthouse
+exec: helm fetch jenkins-x/lighthouse --version 0.0.683 --untar --untardir /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683
+exec: helm fetch jenkins-x/tekton --version 0.0.56 --untar --untardir /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56: 
+Fetching jenkins-x/bucketrepo
+exec: helm fetch jenkins-x/bucketrepo --version 0.1.39 --untar --untardir /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39
+exec: helm fetch jenkins-x/lighthouse --version 0.0.683 --untar --untardir /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683: 
+Fetching stable/docker-registry
+exec: helm fetch stable/docker-registry --untar --untardir /tmp/533018829/**/docker-registry/stable/docker-registry/latest
+exec: helm fetch jenkins-x/bucketrepo --version 0.1.39 --untar --untardir /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39: 
+Fetching banzaicloud-stable/vault-operator
+exec: helm fetch banzaicloud-stable/vault-operator --version 1.3.0 --untar --untardir /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0
+exec: helm fetch stable/docker-registry --untar --untardir /tmp/533018829/**/docker-registry/stable/docker-registry/latest: 
+Fetching **-labs/vault-instance
+exec: helm fetch **-labs/vault-instance --untar --untardir /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest
+exec: helm fetch banzaicloud-stable/vault-operator --version 1.3.0 --untar --untardir /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0: 
+Fetching **-labs/pusher-wave
+exec: helm fetch **-labs/pusher-wave --version 1.0.0 --untar --untardir /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0
+exec: helm fetch **-labs/vault-instance --untar --untardir /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest: 
+Fetching dev/godemo61
+exec: helm fetch dev/godemo61 --version 0.0.58 --untar --untardir /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58
+exec: helm fetch dev/godemo61 --version 0.0.58 --untar --untardir /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58: 
+Fetching dev/godemo60
+exec: helm fetch dev/godemo60 --version 0.0.10 --untar --untardir /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10
+exec: helm fetch **-labs/pusher-wave --version 1.0.0 --untar --untardir /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0: 
+exec: helm fetch dev/godemo60 --version 0.0.10 --untar --untardir /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10: 
+13 release(s) found in helmfile.yaml
+
+Building dependency release=**boot-helmfile-resources, chart=/tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources
+exec: helm dependency build /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources
+exec: helm dependency build /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources: Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "dev" chart repository
+...Successfully got an update from the "external-secrets" chart repository
+...Successfully got an update from the "**-labs" chart repository
+...Successfully got an update from the "banzaicloud-stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "**" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 5 charts
+Downloading ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Deleting outdated charts
+
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "dev" chart repository
+...Successfully got an update from the "external-secrets" chart repository
+...Successfully got an update from the "**-labs" chart repository
+...Successfully got an update from the "banzaicloud-stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "**" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 5 charts
+Downloading ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Already downloaded ** from repo http://chartmuseum.jenkins-x.io
+Deleting outdated charts
+
+Building dependency release=kubernetes-external-secrets, chart=/tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets
+exec: helm dependency build /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets
+exec: helm dependency build /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets: 
+Building dependency release=jenkins-x-crds, chart=/tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds
+exec: helm dependency build /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds
+exec: helm dependency build /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds: 
+Building dependency release=nginx-ingress, chart=/tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress
+exec: helm dependency build /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress
+exec: helm dependency build /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress: 
+Building dependency release=tekton, chart=/tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton
+exec: helm dependency build /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton
+exec: helm dependency build /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton: 
+Building dependency release=lighthouse, chart=/tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse
+exec: helm dependency build /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse
+exec: helm dependency build /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse: 
+Building dependency release=bucketrepo, chart=/tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo
+exec: helm dependency build /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo
+exec: helm dependency build /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo: 
+Building dependency release=docker-registry, chart=/tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry
+exec: helm dependency build /tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry
+exec: helm dependency build /tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry: 
+Building dependency release=vault-operator, chart=/tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator
+exec: helm dependency build /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator
+exec: helm dependency build /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator: Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "dev" chart repository
+...Successfully got an update from the "external-secrets" chart repository
+...Successfully got an update from the "**-labs" chart repository
+...Successfully got an update from the "banzaicloud-stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "**" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading etcd-operator from repo https://kubernetes-charts.storage.googleapis.com/
+Deleting outdated charts
+
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "dev" chart repository
+...Successfully got an update from the "external-secrets" chart repository
+...Successfully got an update from the "**-labs" chart repository
+...Successfully got an update from the "banzaicloud-stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "**" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading etcd-operator from repo https://kubernetes-charts.storage.googleapis.com/
+Deleting outdated charts
+
+Building dependency release=vault-instance, chart=/tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance
+exec: helm dependency build /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance
+exec: helm dependency build /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance: 
+Building dependency release=pusher-wave, chart=/tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave
+exec: helm dependency build /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave
+exec: helm dependency build /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave: 
+Building dependency release=godemo61, chart=/tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61
+exec: helm dependency build /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61
+exec: helm dependency build /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61: 
+Building dependency release=godemo60, chart=/tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60
+exec: helm dependency build /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60
+exec: helm dependency build /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60: 
+processing 1 groups of releases in this order:
+GROUP RELEASES
+1     **/**boot-helmfile-resources, secret-infra/kubernetes-external-secrets, **/jenkins-x-crds, nginx/nginx-ingress, **/tekton, **/lighthouse, **/bucketrepo, **/docker-registry, secret-infra/vault-operator, secret-infra/vault-instance, **/pusher-wave, **-staging/godemo61, **-staging/godemo60
+
+processing releases in group 1/1: **/**boot-helmfile-resources, secret-infra/kubernetes-external-secrets, **/jenkins-x-crds, nginx/nginx-ingress, **/tekton, **/lighthouse, **/bucketrepo, **/docker-registry, secret-infra/vault-operator, secret-infra/vault-instance, **/pusher-wave, **-staging/godemo61, **-staging/godemo60
+successfully generated the value file at versionStream/charts/jenkins-x/**boot-helmfile-resources/values.yaml.gotmpl. produced:
+versions:
+  **l: 0.0.130
+
+sourceRepositoriesEnvKey: true
+
+controllerrole:
+  image:
+    repository: gcr.io/jenkinsxio-labs-private/**l
+    tag: 0.0.208
+
+controllerbuild:
+  image:
+    repository: gcr.io/jenkinsxio-labs-private/**l
+    tag: 0.0.208
+
+secrets:
+
+  mavenSettings: |-
+    <settings>
+        <localRepository>/home/jenkins/.mvnrepository</localRepository>
+        <!--This sends everything else to /public -->
+          <mirrors>
+              <mirror>
+                  <id>bucketrepo</id>
+                  <name>bucketrepo mirror</name>
+                  <mirrorOf>*</mirrorOf>
+                  <url>http://bucketrepo/bucketrepo/</url>
+              </mirror>
+            </mirrors>
+
+        <!-- lets disable the download progress indicator that fills up logs -->
+        <interactiveMode>false</interactiveMode>
+
+        <servers>
+            <server>
+                <id>local-nexus</id>
+                <username>todo</username>
+                <password>todo</password>
+            </server>
+            <server>
+                <id>nexus</id>
+                <username>todo</username>
+                <password>todo</password>
+            </server>
+            <server>
+                <id>docker.io</id>
+            </server>
+        </servers>
+
+        <profiles>
+            <profile>
+                <id>nexus</id>
+                <properties>
+                  <altDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altDeploymentRepository>
+                  <altReleaseDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-releases/</altReleaseDeploymentRepository>
+                  <altSnapshotDeploymentRepository>local-nexus::default::http://bucketrepo/bucketrepo/deploy/maven-snapshots/</altSnapshotDeploymentRepository>
+                </properties>
+
+                <repositories>
+                    <repository>
+                        <id>central</id>
+                        <url>http://central</url>
+                        <releases><enabled>true</enabled></releases>
+                        <snapshots><enabled>true</enabled></snapshots>
+                    </repository>
+                </repositories>
+                <pluginRepositories>
+                    <pluginRepository>
+                        <id>central</id>
+                        <url>http://central</url>
+                        <releases><enabled>true</enabled></releases>
+                        <snapshots><enabled>true</enabled></snapshots>
+                    </pluginRepository>
+                </pluginRepositories>
+            </profile>
+            <profile>
+                <id>repo.jenkins-ci.org</id>
+                <properties>
+                    <altDeploymentRepository>repo.jenkins-ci.org::default::https://repo.jenkins-ci.org/releases/</altDeploymentRepository>
+                    <altReleaseDeploymentRepository>repo.jenkins-ci.org::default::https://repo.jenkins-ci.org/releases/</altReleaseDeploymentRepository>
+                    <altSnapshotDeploymentRepository>repo.jenkins-ci.org::default::https://repo.jenkins-ci.org/snapshots/</altSnapshotDeploymentRepository>
+                </properties>
+
+            </profile>
+            <profile>
+                <id>maven.jenkins-ci.org</id>
+                <properties>
+                    <altDeploymentRepository>maven.jenkins-ci.org::default::https://maven.jenkins-ci.org/releases/</altDeploymentRepository>
+                    <altReleaseDeploymentRepository>maven.jenkins-ci.org::default::https://maven.jenkins-ci.org/releases/</altReleaseDeploymentRepository>
+                    <altSnapshotDeploymentRepository>maven.jenkins-ci.org::default::https://maven.jenkins-ci.org/snapshots/</altSnapshotDeploymentRepository>
+                </properties>
+
+            </profile>
+            <profile>
+                <id>release</id>
+                <properties>
+                    <gpg.executable>gpg</gpg.executable>
+                    <!-- TODO use: .Values.secrets.gpg.passphrase when it is always populated -->
+                    <gpg.passphrase></gpg.passphrase>
+                </properties>
+            </profile>
+        </profiles>
+
+        <activeProfiles>
+            <activeProfile>nexus</activeProfile>
+        </activeProfiles>
+    </settings>
+
+successfully generated the value file at charts/jenkins-x/**boot-helmfile-resources/values.yaml. produced:
+ingress:
+  # allows you to specify custom hosts
+  customHosts:
+    hook: "7f7d828bc570.ngrok.io"
+
+kaniko:
+  # lets support insecure docker registries so that we
+  # can use the local docker-registry chart
+  flags: "--insecure"
+Generating templates to : build/tmp/helmfile-346826c9-**boot-helmfile-resources
+
+Templating release=**boot-helmfile-resources, chart=/tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources
+exec: helm template **boot-helmfile-resources /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources --namespace ** --values /tmp/values570010056 --values /tmp/values280510087 --output-dir build/tmp/helmfile-346826c9-**boot-helmfile-resources --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template **boot-helmfile-resources /tmp/533018829/**/**boot-helmfile-resources/jenkins-x/**boot-helmfile-resources/0.0.279/**boot-helmfile-resources --namespace ** --values /tmp/values570010056 --values /tmp/values280510087 --output-dir build/tmp/helmfile-346826c9-**boot-helmfile-resources --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/docker-cfg-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/gh-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/maven-settings-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/npm-token-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/release-gpg-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/ingress-config-configmap.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-devpod-config.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-docker-registry.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-extensions-config.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/committer-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/**-pipeline-activity-reporter-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/**-view-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/owner-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/viewer-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/700-bucketrepo-ing.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/700-hook-ing.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/buildpacks.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/buildpacks.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/default-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/env-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/pr-only-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/release-only-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/repositories.yaml
+
+
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/docker-cfg-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/gh-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/maven-settings-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/npm-token-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/release-gpg-secret.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/ingress-config-configmap.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-devpod-config.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-docker-registry.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-extensions-config.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/jenkins-x-pod-templates.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/committer-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/**-pipeline-activity-reporter-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/**-view-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/owner-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/viewer-role.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/cronjob.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/700-bucketrepo-ing.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/700-hook-ing.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/buildpacks.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/buildpacks.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/environments.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerbuild/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/controllerrole/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcactivities/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpods/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/charts/gcpreviews/templates/release.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/default-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/env-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/pr-only-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/release-only-scheduler.yaml
+wrote build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources/templates/repositories.yaml
+
+
+successfully generated the value file at versionStream/charts/external-secrets/kubernetes-external-secrets/values.yaml.gotmpl. produced:
+**Requirements:
+  ingress:
+    domain: cluster.local
+    namespaceSubDomain: "."
+    tls:
+      enabled: true
+
+crds:
+  create: true
+env:
+  VAULT_ADDR: https://vault:8200
+  NODE_EXTRA_CA_CERTS: "/usr/local/share/ca-certificates/ca.crt"
+
+filesFromSecret:
+  vault-ca:
+    secret: vault-tls
+    mountPath: /usr/local/share/ca-certificates
+Generating templates to : build/tmp/helmfile-346826c9-kubernetes-external-secrets
+
+Templating release=kubernetes-external-secrets, chart=/tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets
+exec: helm template kubernetes-external-secrets /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets --namespace secret-infra --values /tmp/values121318458 --output-dir build/tmp/helmfile-346826c9-kubernetes-external-secrets --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template kubernetes-external-secrets /tmp/533018829/secret-infra/kubernetes-external-secrets/external-secrets/kubernetes-external-secrets/4.0.0/kubernetes-external-secrets --namespace secret-infra --values /tmp/values121318458 --output-dir build/tmp/helmfile-346826c9-kubernetes-external-secrets --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/crds/kubernetes-client.io_externalsecrets_crd.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/crds/kubernetes-client.io_externalsecrets_crd.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/rbac.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets/templates/deployment.yaml
+
+
+
+
+successfully generated the value file at versionStream/charts/**-labs/jenkins-x-crds/values.yaml. produced:
+# disable by default as its often too big!
+enableSchedulerValidation: false
+
+Generating templates to : build/tmp/helmfile-346826c9-jenkins-x-crds
+
+Templating release=jenkins-x-crds, chart=/tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds
+exec: helm template jenkins-x-crds /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds --namespace ** --values /tmp/values142850641 --output-dir build/tmp/helmfile-346826c9-jenkins-x-crds --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template jenkins-x-crds /tmp/533018829/**/jenkins-x-crds/**-labs/jenkins-x-crds/0.0.7/jenkins-x-crds --namespace ** --values /tmp/values142850641 --output-dir build/tmp/helmfile-346826c9-jenkins-x-crds --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/apps-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/buildpacks-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/commitstatuses-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/environmentrolebindings-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/environments-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/extensions-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/facts-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/gitservices-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/pipelineactivities-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/pipelinestructures-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/plugins-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/releases-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/schedulers-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/sourcerepositories-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/sourcerepositorygroups-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/teams-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/users-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/workflows-crd.yaml
+
+
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/apps-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/buildpacks-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/commitstatuses-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/environmentrolebindings-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/environments-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/extensions-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/facts-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/gitservices-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/pipelineactivities-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/pipelinestructures-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/plugins-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/releases-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/schedulers-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/sourcerepositories-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/sourcerepositorygroups-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/teams-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/users-crd.yaml
+wrote build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds/templates/workflows-crd.yaml
+
+
+successfully generated the value file at versionStream/charts/stable/nginx-ingress/values.yaml.gotmpl. produced:
+controller:
+  replicaCount: 3
+  extraArgs:
+    publish-service: nginx/nginx-ingress-controller
+  service:
+    omitClusterIP: true
+defaultBackend:
+  service:
+    omitClusterIP: true
+rbac:
+  create: true
+Generating templates to : build/tmp/helmfile-346826c9-nginx-ingress
+
+Templating release=nginx-ingress, chart=/tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress
+exec: helm template nginx-ingress /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress --namespace nginx --values /tmp/values871707516 --output-dir build/tmp/helmfile-346826c9-nginx-ingress --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template nginx-ingress /tmp/533018829/nginx/nginx-ingress/stable/nginx-ingress/1.39.1/nginx-ingress --namespace nginx --values /tmp/values871707516 --output-dir build/tmp/helmfile-346826c9-nginx-ingress --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-poddisruptionbudget.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-poddisruptionbudget.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-role.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-service.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-service.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-deployment.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-deployment.yaml
+
+
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-role.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-service.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-service.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/controller-deployment.yaml
+wrote build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress/templates/default-backend-deployment.yaml
+
+
+successfully generated the value file at versionStream/charts/jenkins-x/tekton/values.yaml.gotmpl. produced:
+webhook:
+  enabled: false
+
+auth:
+  git:
+    username: "jenkins-x-labs-bot"
+    password: "todo"
+    url: https://github.com
+  docker:
+    username: "todo"
+    password: "todo"
+    url: ""
+
+tillerNamespace: ""
+
+Generating templates to : build/tmp/helmfile-346826c9-tekton
+
+Templating release=tekton, chart=/tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton
+exec: helm template tekton /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton --namespace ** --values /tmp/values575431851 --output-dir build/tmp/helmfile-346826c9-tekton --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template tekton /tmp/533018829/**/tekton/jenkins-x/tekton/0.0.56/tekton --namespace ** --values /tmp/values575431851 --output-dir build/tmp/helmfile-346826c9-tekton --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/101-podsecuritypolicy.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/251-bot-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-docker-secret.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-git-secret.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-artifact-bucket.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-artifact-pvc.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-defaults.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-entrypoint.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-logging.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-observability.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-clustertask.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-condition.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-imagecache.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-pipeline.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-pipelinerun.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-resource.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-task.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-taskrun.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/200-clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/clusterrole-aggregate-edit.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/clusterrole-aggregate-view.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/200-clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-role.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/400-controller-service.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/controller.yaml
+
+
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/101-podsecuritypolicy.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/251-bot-serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-docker-secret.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/250-git-secret.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-artifact-bucket.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-artifact-pvc.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-defaults.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-entrypoint.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-logging.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/config-observability.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-clustertask.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-condition.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-imagecache.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-pipeline.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-pipelinerun.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-resource.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-task.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/300-taskrun.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/200-clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/clusterrole-aggregate-edit.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/clusterrole-aggregate-view.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/200-clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-role.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/build-bot-rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/400-controller-service.yaml
+wrote build/tmp/helmfile-346826c9-tekton/tekton/templates/controller.yaml
+
+
+successfully generated the value file at versionStream/charts/jenkins-x/lighthouse/values.yaml.gotmpl. produced:
+enabled: true
+
+hmacToken: "todo"
+
+git:
+  kind: github
+  name: github
+  server: https://github.com
+
+service:
+  name: hook
+  
+replicaCount: 2
+
+env:
+  JX_DEFAULT_IMAGE: gcr.io/jenkinsxio/builder-maven:0.0.0-SNAPSHOT-PR-7527-27
+
+image:
+  repository: gcr.io/jenkinsxio/lighthouse
+
+vault:
+  enabled: true
+
+clusterName: "kind"
+
+user: "jenkins-x-labs-bot"
+
+oauthToken: "todo"
+
+Generating templates to : build/tmp/helmfile-346826c9-lighthouse
+
+Templating release=lighthouse, chart=/tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse
+exec: helm template lighthouse /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse --namespace ** --values /tmp/values433042958 --output-dir build/tmp/helmfile-346826c9-lighthouse --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template lighthouse /tmp/533018829/**/lighthouse/jenkins-x/lighthouse/0.0.683/lighthouse --namespace ** --values /tmp/values433042958 --output-dir build/tmp/helmfile-346826c9-lighthouse --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/hmacsecret.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/oauthsecret.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/lighthousejobs-crd.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-service.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-service.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-cj.yaml
+
+
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-sa.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/hmacsecret.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/oauthsecret.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/lighthousejobs-crd.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-role.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-rb.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-service.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-service.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/foghorn-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/**-controller-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/keeper-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/webhooks-deployment.yaml
+wrote build/tmp/helmfile-346826c9-lighthouse/lighthouse/templates/gc-jobs-cj.yaml
+
+
+successfully generated the value file at versionStream/charts/jenkins-x/bucketrepo/values.yaml.gotmpl. produced:
+serviceaccount:
+  annotations:
+
+Generating templates to : build/tmp/helmfile-346826c9-bucketrepo
+
+Templating release=bucketrepo, chart=/tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo
+exec: helm template bucketrepo /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo --namespace ** --values /tmp/values367183381 --output-dir build/tmp/helmfile-346826c9-bucketrepo --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template bucketrepo /tmp/533018829/**/bucketrepo/jenkins-x/bucketrepo/0.1.39/bucketrepo --namespace ** --values /tmp/values367183381 --output-dir build/tmp/helmfile-346826c9-bucketrepo --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/config-secret.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/secret.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/deployment.yaml
+
+
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/config-secret.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/secret.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-bucketrepo/bucketrepo/templates/deployment.yaml
+
+
+successfully generated the value file at versionStream/charts/stable/docker-registry/values.yaml.gotmpl. produced:
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  hosts:
+  - docker-registry-**.127.0.0.1.xip.io
+
+Generating templates to : build/tmp/helmfile-346826c9-docker-registry
+
+Templating release=docker-registry, chart=/tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry
+exec: helm template docker-registry /tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry --namespace ** --values /tmp/values200040560 --output-dir build/tmp/helmfile-346826c9-docker-registry --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template docker-registry /tmp/533018829/**/docker-registry/stable/docker-registry/latest/docker-registry --namespace ** --values /tmp/values200040560 --output-dir build/tmp/helmfile-346826c9-docker-registry --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/secret.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/configmap.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/ingress.yaml
+
+
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/secret.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/configmap.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-docker-registry/docker-registry/templates/ingress.yaml
+
+
+Generating templates to : build/tmp/helmfile-346826c9-vault-operator
+
+Templating release=vault-operator, chart=/tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator
+exec: helm template vault-operator /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator --namespace secret-infra --output-dir build/tmp/helmfile-346826c9-vault-operator --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template vault-operator /tmp/533018829/secret-infra/vault-operator/banzaicloud-stable/vault-operator/1.3.0/vault-operator --namespace secret-infra --output-dir build/tmp/helmfile-346826c9-vault-operator --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/crds/crd.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/sa.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/deployment.yaml
+
+
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/crds/crd.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/sa.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/rolebinding.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-vault-operator/vault-operator/templates/deployment.yaml
+
+
+Generating templates to : build/tmp/helmfile-346826c9-vault-instance
+
+Templating release=vault-instance, chart=/tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance
+exec: helm template vault-instance /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance --namespace secret-infra --output-dir build/tmp/helmfile-346826c9-vault-instance --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template vault-instance /tmp/533018829/secret-infra/vault-instance/**-labs/vault-instance/latest/vault-instance --namespace secret-infra --output-dir build/tmp/helmfile-346826c9-vault-instance --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/sa.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/pvc.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/cluster-role-binding.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/role-binding.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/cr.yaml
+
+
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/sa.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/pvc.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/cluster-role-binding.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/role.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/role-binding.yaml
+wrote build/tmp/helmfile-346826c9-vault-instance/vault-instance/templates/cr.yaml
+
+
+Generating templates to : build/tmp/helmfile-346826c9-pusher-wave
+
+Templating release=pusher-wave, chart=/tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave
+exec: helm template pusher-wave /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave --namespace ** --output-dir build/tmp/helmfile-346826c9-pusher-wave --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template pusher-wave /tmp/533018829/**/pusher-wave/**-labs/pusher-wave/1.0.0/pusher-wave --namespace ** --output-dir build/tmp/helmfile-346826c9-pusher-wave --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/deployment.yaml
+
+
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/serviceaccount.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/clusterrole.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/clusterrolebinding.yaml
+wrote build/tmp/helmfile-346826c9-pusher-wave/pusher-wave/templates/deployment.yaml
+
+
+Generating templates to : build/tmp/helmfile-346826c9-godemo61
+
+Templating release=godemo61, chart=/tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61
+exec: helm template godemo61 /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61 --namespace **-staging --output-dir build/tmp/helmfile-346826c9-godemo61 --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+exec: helm template godemo61 /tmp/533018829/**-staging/godemo61/dev/godemo61/0.0.58/godemo61 --namespace **-staging --output-dir build/tmp/helmfile-346826c9-godemo61 --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/ingress.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/release.yaml
+
+
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/ingress.yaml
+wrote build/tmp/helmfile-346826c9-godemo61/godemo61/templates/release.yaml
+
+
+Generating templates to : build/tmp/helmfile-346826c9-godemo60
+
+Templating release=godemo60, chart=/tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60
+exec: helm template godemo60 /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60 --namespace **-staging --output-dir build/tmp/helmfile-346826c9-godemo60 --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/ingress.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/release.yaml
+
+
+exec: helm template godemo60 /tmp/533018829/**-staging/godemo60/dev/godemo60/0.0.10/godemo60 --namespace **-staging --output-dir build/tmp/helmfile-346826c9-godemo60 --include-crds --values=**-values.yaml --values=src/fake-secrets.yaml.gotmpl --debug: wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/service.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/deployment.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/ingress.yaml
+wrote build/tmp/helmfile-346826c9-godemo60/godemo60/templates/release.yaml
+
+
+Removed /tmp/values200040560
+Removed /tmp/values367183381
+Removed /tmp/values433042958
+Removed /tmp/values575431851
+Removed /tmp/values871707516
+Removed /tmp/values142850641
+Removed /tmp/values121318458
+Removed /tmp/values570010056
+Removed /tmp/values280510087
+# split the files into one file per resource
+** gitops split --dir build/tmp
+# move the templated files to correct cluster or namespace folder
+# setting the namespace on namespaced resources
+** gitops helmfile move --dir build/tmp --output-dir config-root
+processing chart dir build/tmp/helmfile-346826c9-bucketrepo/bucketrepo
+processing chart dir build/tmp/helmfile-346826c9-docker-registry/docker-registry
+processing chart dir build/tmp/helmfile-346826c9-godemo60/godemo60
+processing chart dir build/tmp/helmfile-346826c9-godemo61/godemo61
+processing chart dir build/tmp/helmfile-346826c9-jenkins-x-crds/jenkins-x-crds
+processing chart dir build/tmp/helmfile-346826c9-**boot-helmfile-resources/**boot-helmfile-resources
+processing chart dir build/tmp/helmfile-346826c9-kubernetes-external-secrets/kubernetes-external-secrets
+processing chart dir build/tmp/helmfile-346826c9-lighthouse/lighthouse
+processing chart dir build/tmp/helmfile-346826c9-nginx-ingress/nginx-ingress
+processing chart dir build/tmp/helmfile-346826c9-pusher-wave/pusher-wave
+processing chart dir build/tmp/helmfile-346826c9-tekton/tekton
+processing chart dir build/tmp/helmfile-346826c9-vault-instance/vault-instance
+processing chart dir build/tmp/helmfile-346826c9-vault-operator/vault-operator
+no Namespace resource ** so created file config-root/cluster/namespaces/**.yaml
+no Namespace resource **-staging so created file config-root/cluster/namespaces/**-staging.yaml
+no Namespace resource secret-infra so created file config-root/cluster/namespaces/secret-infra.yaml
+no Namespace resource nginx so created file config-root/cluster/namespaces/nginx.yaml
+# convert k8s Secrets => ExternalSecret resources using secret mapping + schemas
+# see: https://github.com/jenkins-x/**-secret#mappings
+** secret convert --dir config-root
+# old approach
+#** gitops **-apps template --template-values src/fake-secrets.yaml.txt -o config-root/namespaces
+#** gitops namespace --dir-mode --dir config-root/namespaces
+# disable cert manager validation of webhooks due to cert issues
+#** gitops label --kind Namespace cert-manager.io/disable-validation=true
+cp -r ./build/base/* config-root
+rm config-root/kustomization.yaml
+** gitops scheduler -d config-root/namespaces/** -o src/base/namespaces/**/lighthouse-config
+loaded Scheduler name default in namespace **
+loaded Scheduler name environment in namespace **
+loaded Environment name dev in namespace **
+loaded Scheduler name pr-only in namespace **
+loaded Scheduler name release-only in namespace **
+loaded SourceRepository name dev in namespace **
+loaded SourceRepository name *********-godemo60 in namespace 
+loaded SourceRepository name *********-godemo61 in namespace 
+generated config ConfigMap src/base/namespaces/**/lighthouse-config/config-cm.yaml and plugins ConfigMap src/base/namespaces/**/lighthouse-config/plugins-cm.yaml
+# TODO do we need this?
+#** gitops ingress
+** gitops label --dir config-root gitops.jenkins-x.io/pipeline=environment
+** gitops annotate --dir  config-root/namespaces --kind Deployment wave.pusher.com/update-on-config-change=true
+# lets force a rolling upgrade of lighthouse pods whenever we update the lighthouse config...
+** gitops hash -s config-root/namespaces/**/lighthouse-config/config-cm.yaml -s config-root/namespaces/**/lighthouse-config/plugins-cm.yaml -d config-root/namespaces/**/lighthouse
+added annotation: jenkins-x.io/hash=3a3ff271ee21d2a8379fd39f08281adde6d0873936ad1bc1c9b9c43bf4c52491 to Deployments in dir config-root/namespaces/**/lighthouse
+git add *
+The following paths are ignored by one of your .gitignore files:
+build
+Use -f if you really want to add them.
+make: [src/Makefile.mk:161: commit] Error 1 (ignored)
+git status
+On branch master
+nothing to commit, working tree clean
+# lets ignore commit errors in case there's no changes and to stop pipelines failing
+git commit -m "chore: regenerated"
+On branch master
+nothing to commit, working tree clean
+make: [src/Makefile.mk:164: commit] Error 1 (ignored)
+** gitops pr push
+about to run: git config --get user.name
+jenkins-x-bot
+about to run: git config --get user.email
+jenkins-x@googlegroups.com
+about to run: git config --global credential.helper store in dir /builder/home
+about to run: git checkout -b pr-0533f621-914c-43a8-8a55-3c8e491cdc37
+Switched to a new branch 'pr-0533f621-914c-43a8-8a55-3c8e491cdc37'
+about to run: git push origin pr-0533f621-914c-43a8-8a55-3c8e491cdc37
+Everything up-to-date
