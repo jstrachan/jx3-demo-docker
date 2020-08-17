@@ -9,4 +9,4 @@ metadata:
   labels:
     gitops.jenkins-x.io/pipeline: 'environment'
 data:
-  docker.registry: docker-registry-jx.172.0.0.1.xip.io
+  docker.registry: docker-registry-jx.127.0.0.1.xip.io
