@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: godemo61
   labels:
-    chart: "godemo61-0.0.58"
+    chart: "godemo61-0.0.76"
     gitops.jenkins-x.io/pipeline: 'environment'
   annotations:
     fabric8.io/expose: "true"

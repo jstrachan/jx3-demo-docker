@@ -2,9 +2,9 @@
 apiVersion: jenkins.io/v1
 kind: Release
 metadata:
-  creationTimestamp: "2020-08-17T05:59:32Z"
+  creationTimestamp: "2020-08-17T09:10:05Z"
   deletionTimestamp: null
-  name: 'godemo61-0.0.58'
+  name: 'godemo61-0.0.76'
   namespace: jx-staging
   labels:
     gitops.jenkins-x.io/pipeline: 'environment'
@@ -14,13 +14,13 @@ spec:
     branch: master
     committer: {}
     message: |
-      release 0.0.58
-    sha: 080d4cd2de398a9d1f9c772d5b87fa0dc2d9ba33
+      release 0.0.78
+    sha: 2c88ce23feafea99ccb40b6f92560a4d1cd87907
   gitCloneUrl: https://github.com/jstrachan/godemo61.git
   gitHttpUrl: https://github.com/jstrachan/godemo61
   gitOwner: jstrachan
   gitRepository: godemo61
   name: 'godemo61'
-  releaseNotesURL: https://github.com/jstrachan/godemo61/releases/tag/v0.0.58
-  version: v0.0.58
+  releaseNotesURL: https://github.com/jstrachan/godemo61/releases/tag/v0.0.76
+  version: v0.0.76
 status: {}
