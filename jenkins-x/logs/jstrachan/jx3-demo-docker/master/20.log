@@ -1,0 +1,23 @@
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-credential-initializer-2qmqc[0m
+{"level":"info","ts":1597650234.7619445,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597650234.7629106,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-working-dir-initializer-lwxqt[0m
+{"level":"info","ts":1597650235.4105835,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1597650235.411886,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-git-source-jstrachan-jx3-demo-docker-maste-9mnfr-sqqcr[0m
+{"level":"info","ts":1597650239.4934924,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1597650241.065796,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned ********************************************.git @ v0.0.20 in path /workspace/source"}
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:987e6e8e755dc635c117505e8b7488691fd27ade
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mjstrachan-jx3-demo-docker-maste-9mnfr-20[0m stage [32mrelease[0m and container [32mstep-release[0m
+make: Nothing to be done for 'release'.
