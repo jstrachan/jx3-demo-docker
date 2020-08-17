@@ -15,4 +15,4 @@ spec:
       - backend:
           serviceName: godemo61
           servicePort: 80
-    host: godemo61-jx.192.168.1.202.xip.io
+    host: godemo61-jx.127.0.0.1.xip.io
