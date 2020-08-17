@@ -79,7 +79,7 @@ releases:
   name: pusher-wave
   namespace: jx
 - chart: dev/godemo61
-  version: 0.0.58
+  version: 0.0.76
   name: godemo61
   namespace: jx-staging
 - chart: dev/godemo60
