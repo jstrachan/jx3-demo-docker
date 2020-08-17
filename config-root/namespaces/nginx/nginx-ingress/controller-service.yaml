@@ -25,4 +25,4 @@ spec:
     app: nginx-ingress
     release: nginx-ingress
     app.kubernetes.io/component: controller
-  type: "NodePort"
+  type: "LoadBalancer"

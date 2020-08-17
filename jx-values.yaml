@@ -17,8 +17,7 @@ jxRequirements:
     gitName: github
     gitServer: https://github.com
     namespace: jx
-    provider: kind
-    registry: 10.107.115.36
+    provider: docker
   environments:
   - ingress:
       domain: ""
