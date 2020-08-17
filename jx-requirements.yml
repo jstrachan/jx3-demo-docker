@@ -17,7 +17,7 @@ cluster:
   gitServer: https://github.com
   namespace: jx
   provider: docker
-  registry: 10.107.115.36
+  registry: docker-registry-jx.127.0.0.1.xip.io
 environments:
 - ingress:
     domain: ""
